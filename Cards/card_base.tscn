@@ -1,0 +1,213 @@
+[gd_scene load_steps=17 format=3 uid="uid://cphdqkm0pefv7"]
+
+[ext_resource type="Script" path="res://Cards/card_base.gd" id="1_t87wk"]
+[ext_resource type="Texture2D" uid="uid://dwa5ditwa2bn5" path="res://Cards/CardBase/card_base_02.png" id="2_7uipf"]
+[ext_resource type="Texture2D" uid="uid://bxaguv04wuklh" path="res://Cards/Units/Lich.png" id="3_6fcu6"]
+[ext_resource type="Texture2D" uid="uid://dmjpdregtmbvt" path="res://Cards/CardBase/card_base_02_outline.png" id="3_b4w1v"]
+[ext_resource type="FontFile" uid="uid://ieeropj2v03b" path="res://Fonts/CompassPro.ttf" id="5_t4s4u"]
+[ext_resource type="Texture2D" uid="uid://df0ulepv74e7f" path="res://Cards/NameLabel_01.png" id="6_tworo"]
+[ext_resource type="Texture2D" uid="uid://crxhaw5pggefu" path="res://Cards/TypeIcons/Units.png" id="7_sx2dj"]
+[ext_resource type="Texture2D" uid="uid://cdqp45avs3od6" path="res://Assets/Icons/Attack.png" id="8_sx8an"]
+[ext_resource type="FontFile" uid="uid://chsdwer05iq22" path="res://Fonts/EquipmentPro.ttf" id="9_dnnwt"]
+[ext_resource type="Texture2D" uid="uid://b4hrvh54tmsn0" path="res://Assets/Icons/Health.png" id="10_fjuoj"]
+[ext_resource type="Texture2D" uid="uid://bf5derio17c0o" path="res://Assets/Icons/Cost.png" id="11_7y61c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8i3de"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("6_tworo")
+texture_margin_left = 39.0
+texture_margin_top = 18.0
+texture_margin_right = 39.0
+texture_margin_bottom = 18.0
+expand_margin_left = 16.0
+expand_margin_top = 5.0
+expand_margin_right = 16.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_4hmwf"]
+font = ExtResource("9_dnnwt")
+font_size = 32
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swk0u"]
+bg_color = Color(0, 0, 0, 0.196078)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svoay"]
+bg_color = Color(0.996078, 0.882353, 0.721569, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.901961, 0.270588, 0.223529, 1)
+expand_margin_left = 5.0
+expand_margin_right = 26.0
+shadow_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_a0yki"]
+font = ExtResource("9_dnnwt")
+font_size = 32
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="CardBase" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 250.0
+offset_bottom = 350.0
+pivot_offset = Vector2(125, 175)
+script = ExtResource("1_t87wk")
+
+[node name="CardBg" type="TextureRect" parent="."]
+self_modulate = Color(0.996078, 0.882353, 0.721569, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7uipf")
+
+[node name="Border" type="TextureRect" parent="."]
+self_modulate = Color(0.745098, 0, 0.266667, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_b4w1v")
+
+[node name="Unit" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 172.0
+grow_horizontal = 2
+texture = ExtResource("3_6fcu6")
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+offset_top = -11.0
+offset_right = 56.0
+offset_bottom = 19.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t4s4u")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_8i3de")
+text = "Lich"
+vertical_alignment = 1
+
+[node name="Type" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = -16.0
+offset_top = 26.0
+offset_right = 34.0
+offset_bottom = 76.0
+texture = ExtResource("7_sx2dj")
+stretch_mode = 5
+
+[node name="Stats" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -178.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Stats"]
+layout_mode = 2
+mouse_filter = 0
+
+[node name="Attack" type="HBoxContainer" parent="Stats/VBox"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Stats/VBox/Attack"]
+layout_mode = 2
+texture = ExtResource("8_sx8an")
+
+[node name="Label" type="Label" parent="Stats/VBox/Attack"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "350"
+label_settings = SubResource("LabelSettings_4hmwf")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Health" type="HBoxContainer" parent="Stats/VBox"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Stats/VBox/Health"]
+layout_mode = 2
+texture = ExtResource("10_fjuoj")
+
+[node name="Label" type="Label" parent="Stats/VBox/Health"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "250"
+label_settings = SubResource("LabelSettings_4hmwf")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Info" type="RichTextLabel" parent="Stats/VBox"]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Card
+ 		Description
+							Here"
+
+[node name="Panel" type="Panel" parent="Stats"]
+show_behind_parent = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_swk0u")
+
+[node name="Cost" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_top = -19.0
+offset_right = 21.0
+offset_bottom = 26.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Label" type="Label" parent="Cost"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_svoay")
+text = "400"
+label_settings = SubResource("LabelSettings_a0yki")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Cost"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+texture = ExtResource("11_7y61c")
+stretch_mode = 5
