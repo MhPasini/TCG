@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmjpdregtmbvt"
-path="res://.godot/imported/card_base_02_outline.png-af587f6f3f5427aa19600cf804896a78.ctex"
+uid="uid://dpamydd2huc1c"
+path="res://.godot/imported/card_base.png-ef72e7448ed354c26ad0bec9a654af92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cards/CardBase/card_base_02_outline.png"
-dest_files=["res://.godot/imported/card_base_02_outline.png-af587f6f3f5427aa19600cf804896a78.ctex"]
+source_file="res://Cards/CardBase/card_base.png"
+dest_files=["res://.godot/imported/card_base.png-ef72e7448ed354c26ad0bec9a654af92.ctex"]
 
 [params]
 

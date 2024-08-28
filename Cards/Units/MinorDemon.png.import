@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwa5ditwa2bn5"
-path="res://.godot/imported/card_base_02.png-61862bb5b26fa28ed47ffc57f205e6b5.ctex"
+uid="uid://beou0nobmbnyg"
+path="res://.godot/imported/MinorDemon.png-7b718b49e7ad0fb6cd88ce47e216ecca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cards/CardBase/card_base_02.png"
-dest_files=["res://.godot/imported/card_base_02.png-61862bb5b26fa28ed47ffc57f205e6b5.ctex"]
+source_file="res://Cards/Units/MinorDemon.png"
+dest_files=["res://.godot/imported/MinorDemon.png-7b718b49e7ad0fb6cd88ce47e216ecca.ctex"]
 
 [params]
 

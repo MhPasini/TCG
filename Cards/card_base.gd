@@ -1,8 +1,8 @@
-extends Control
+extends Node2D
 class_name BaseCard
 
 var cardsDatabase := CardDatabase.new()
-var cardName = 'Worm'
+var cardName = 'Cultist'
 
 @onready var cardInfo : Array = cardsDatabase.DATA[cardsDatabase.get(cardName)]
 
@@ -14,10 +14,10 @@ func _ready() -> void:
 	loadCardInfo()
 
 func loadCardInfo() -> void:
-	$Unit.texture = load(cardImg)
-	$Type.texture = load(cardTypeImg)
-	$Name.text = cardInfo[1]
-	$Cost/Label.text = str(cardInfo[2])
-	$Stats/VBox/Attack/Label.text = str(cardInfo[3])
-	$Stats/VBox/Health/Label.text = str(cardInfo[4])
-	$Stats/VBox/Info.text = cardInfo[6]
+	$Card/CardBg/Unit.texture = load(cardImg)
+	$Card/Type.texture = load(cardTypeImg)
+	$Card/CardBg/Name.text = cardInfo[1]
+	$Card/Cost/Label.text = str(cardInfo[2])
+	$Card/CardBg/Stats/VBox/Attack/Label.text = str(cardInfo[3])
+	$Card/CardBg/Stats/VBox/Health/Label.text = str(cardInfo[4])
+	$Card/CardBg/Stats/VBox/Info.text = cardInfo[6]

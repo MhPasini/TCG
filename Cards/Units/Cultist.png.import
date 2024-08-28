@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxaguv04wuklh"
-path="res://.godot/imported/Lich.png-31b2649299e409e2d91b5fd663c985cb.ctex"
+uid="uid://dw16etwuyf4yl"
+path="res://.godot/imported/Cultist.png-c3159de8c90f8c9636885ad45e3b1658.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cards/Units/Lich.png"
-dest_files=["res://.godot/imported/Lich.png-31b2649299e409e2d91b5fd663c985cb.ctex"]
+source_file="res://Cards/Units/Cultist.png"
+dest_files=["res://.godot/imported/Cultist.png-c3159de8c90f8c9636885ad45e3b1658.ctex"]
 
 [params]
 

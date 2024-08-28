@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df0ulepv74e7f"
-path="res://.godot/imported/NameLabel_01.png-3472b1a33ea11aa9e052449a213766a2.ctex"
+uid="uid://dvobo4oqowlw4"
+path="res://.godot/imported/separator.png-3560476249daa39a56b469ce1de594a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cards/NameLabel_01.png"
-dest_files=["res://.godot/imported/NameLabel_01.png-3472b1a33ea11aa9e052449a213766a2.ctex"]
+source_file="res://Cards/CardBase/separator.png"
+dest_files=["res://.godot/imported/separator.png-3560476249daa39a56b469ce1de594a9.ctex"]
 
 [params]
 

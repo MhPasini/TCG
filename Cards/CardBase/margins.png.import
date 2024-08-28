@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfqblp8jsxlq8"
-path="res://.godot/imported/Attack.png-247d044a3915fa375244818fb575df72.ctex"
+uid="uid://decftmgof7s88"
+path="res://.godot/imported/margins.png-7c20d8a611d8bc4fea835bf18a86e4ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons/Attack.png"
-dest_files=["res://.godot/imported/Attack.png-247d044a3915fa375244818fb575df72.ctex"]
+source_file="res://Cards/CardBase/margins.png"
+dest_files=["res://.godot/imported/margins.png-7c20d8a611d8bc4fea835bf18a86e4ca.ctex"]
 
 [params]
 

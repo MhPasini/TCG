@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cgtwk7fhjj1qh"]
+
+[ext_resource type="FontFile" uid="uid://chsdwer05iq22" path="res://Fonts/EquipmentPro.ttf" id="1_nxuks"]
+
+[resource]
+font = ExtResource("1_nxuks")
+font_size = 32
+font_color = Color(0.399222, 0.349127, 0.252442, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 0)

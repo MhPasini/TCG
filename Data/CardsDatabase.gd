@@ -1,13 +1,15 @@
 extends Resource
 class_name CardDatabase
 
-enum {Lich, Worm}
+enum {Ghoul, Cultist, MinorDemon}
 
 # card = ['type', 'name', cost, atk, health, 'special', 'description']
 
 const DATA = {
-	Lich :
-		['Units', 'Lich', 200, 350, 150, 'None', 'A lich.'],
-	Worm :
-		['Units', 'Worm', 400, 300, 500, 'None', 'A big worm.']
+	Ghoul :
+		['Units', 'Ghoul', 200, 350, 150, 'None', 'Descrição da habilidade aqui.'],
+	Cultist :
+		['Units', 'Cultist', 400, 300, 500, 'None', 'Descrição da habilidade aqui.'],
+	MinorDemon :
+		['Units', 'Demon', 400, 300, 500, 'None', 'Descrição da habilidade aqui.']
 }

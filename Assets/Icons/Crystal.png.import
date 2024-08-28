@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfqblp8jsxlq8"
-path="res://.godot/imported/Attack.png-247d044a3915fa375244818fb575df72.ctex"
+uid="uid://bf5derio17c0o"
+path="res://.godot/imported/Crystal.png-32f3b39a34d994d02333e1f07c5f8fbd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons/Attack.png"
-dest_files=["res://.godot/imported/Attack.png-247d044a3915fa375244818fb575df72.ctex"]
+source_file="res://Assets/Icons/Crystal.png"
+dest_files=["res://.godot/imported/Crystal.png-32f3b39a34d994d02333e1f07c5f8fbd.ctex"]
 
 [params]
 

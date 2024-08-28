@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqkycf1qk83x5"
-path="res://.godot/imported/NameLabel_02.png-cbdafee2b4ce3258916c58e6f3e90a12.ctex"
+uid="uid://v0emyl4q20pq"
+path="res://.godot/imported/Book.png-92293e15c60a520a3e6e5d17486255ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Cards/NameLabel_02.png"
-dest_files=["res://.godot/imported/NameLabel_02.png-cbdafee2b4ce3258916c58e6f3e90a12.ctex"]
+source_file="res://Assets/Icons/Book.png"
+dest_files=["res://.godot/imported/Book.png-92293e15c60a520a3e6e5d17486255ae.ctex"]
 
 [params]
 

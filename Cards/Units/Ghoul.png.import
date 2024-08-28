@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfqblp8jsxlq8"
-path="res://.godot/imported/Attack.png-247d044a3915fa375244818fb575df72.ctex"
+uid="uid://dxnkwxu5ai6g3"
+path="res://.godot/imported/Ghoul.png-68cdd112d5f39ef04d34cede0f7dea34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons/Attack.png"
-dest_files=["res://.godot/imported/Attack.png-247d044a3915fa375244818fb575df72.ctex"]
+source_file="res://Cards/Units/Ghoul.png"
+dest_files=["res://.godot/imported/Ghoul.png-68cdd112d5f39ef04d34cede0f7dea34.ctex"]
 
 [params]
 
