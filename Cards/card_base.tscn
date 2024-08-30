@@ -14,8 +14,6 @@ shader_parameter/border_size = 4.0
 [node name="CardBase" type="Node2D"]
 top_level = true
 script = ExtResource("1_t87wk")
-inHandScale = null
-inGameScale = null
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_braj0")
@@ -50,5 +48,6 @@ offset_bottom = 165.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[connection signal="gui_input" from="DetectionArea" to="." method="_on_detection_area_gui_input"]
 [connection signal="mouse_entered" from="DetectionArea" to="." method="_on_detection_area_mouse_entered"]
 [connection signal="mouse_exited" from="DetectionArea" to="." method="_on_detection_area_mouse_exited"]
