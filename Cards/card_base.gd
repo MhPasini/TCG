@@ -26,7 +26,7 @@ func _ready() -> void:
 
 func tweenToPosition(pos:Vector2, rot:float) -> void:
 	var t = create_tween().set_parallel()
-	t.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	t.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	t.tween_property(self, 'position', pos, 0.5)
 	t.tween_property(self, 'rotation_degrees', rot, 0.5)
 	restPos = pos
@@ -38,7 +38,7 @@ func focusSelf() -> void:
 	scale *= 1.25
 	move_to_front()
 	var t = create_tween().set_parallel()
-	t.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	t.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	t.tween_property(self, 'position', Vector2.UP * 100, 0.4).as_relative().from(restPos)
 	t.tween_property(self, 'rotation_degrees', 0, 0.4)
 
