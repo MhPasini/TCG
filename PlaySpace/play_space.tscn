@@ -6,5 +6,3 @@
 script = ExtResource("1_lpjmv")
 
 [node name="Cards" type="Node" parent="."]
-
-[node name="Background" type="Sprite2D" parent="."]

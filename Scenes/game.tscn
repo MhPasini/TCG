@@ -1,7 +1,378 @@
-[gd_scene load_steps=2 format=3 uid="uid://duh852muqieou"]
+[gd_scene load_steps=22 format=3 uid="uid://duh852muqieou"]
 
+[ext_resource type="Script" path="res://Scenes/game.gd" id="1_b7kh8"]
 [ext_resource type="PackedScene" uid="uid://4isxlpd3n4we" path="res://PlaySpace/play_space.tscn" id="1_hr1vi"]
+[ext_resource type="Script" path="res://PlaySpace/PlayerDeck.gd" id="2_oqg5e"]
+[ext_resource type="Texture2D" uid="uid://dpamydd2huc1c" path="res://Cards/CardBase/card_base.png" id="2_xt7wa"]
+[ext_resource type="Texture2D" uid="uid://decftmgof7s88" path="res://Cards/CardBase/margins.png" id="5_hksgt"]
+[ext_resource type="LabelSettings" uid="uid://cgtwk7fhjj1qh" path="res://Cards/card_text_font.tres" id="5_iql2i"]
+[ext_resource type="Texture2D" uid="uid://dvobo4oqowlw4" path="res://Cards/CardBase/separator.png" id="6_5pmd5"]
+[ext_resource type="Script" path="res://PlaySpace/PlayerHand.gd" id="6_nb6mr"]
+[ext_resource type="Texture2D" uid="uid://rchhlqltavd1" path="res://Cards/CardBase/dirt_02.png" id="7_ys5bb"]
+[ext_resource type="FontFile" uid="uid://chsdwer05iq22" path="res://Fonts/EquipmentPro.ttf" id="8_y2sjp"]
+[ext_resource type="FontFile" uid="uid://6hwold8askq1" path="res://Fonts/FutilePro.ttf" id="10_mx8mn"]
+[ext_resource type="PackedScene" uid="uid://cphdqkm0pefv7" path="res://Cards/card_base.tscn" id="10_tixvh"]
+[ext_resource type="Texture2D" uid="uid://bd2lra01m5t3c" path="res://gwentRef.jpg" id="11_i1n1x"]
+[ext_resource type="Texture2D" uid="uid://bnhy5b0frl0o1" path="res://tween_cheatsheet.webp" id="14_wv4cx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8e65m"]
+texture = ExtResource("5_hksgt")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="Curve" id="Curve_iaogo"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_lw6ss"]
+min_value = -1.0
+max_value = 0.0
+_data = [Vector2(0, -1), 0.0, 3.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(1, -1), -3.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_865hs"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_radj7"]
+offsets = PackedFloat32Array(0.9, 1)
+colors = PackedColorArray(0.901961, 0.807843, 0.67451, 1, 0.160784, 0.141176, 0.0941176, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4gu4q"]
+gradient = SubResource("Gradient_radj7")
+width = 256
+height = 256
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_iyjun"]
+color = Color(0.321569, 0.282353, 0.223529, 1)
+thickness = 4
 
 [node name="Game" type="Node"]
+script = ExtResource("1_b7kh8")
 
 [node name="PlaySpace" parent="." instance=ExtResource("1_hr1vi")]
+
+[node name="PlayerDeck" type="Node2D" parent="."]
+position = Vector2(1014, 566)
+scale = Vector2(0.45, 0.45)
+script = ExtResource("2_oqg5e")
+
+[node name="Card" type="Control" parent="PlayerDeck"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -125.0
+offset_top = -175.0
+offset_right = 125.0
+offset_bottom = 175.0
+pivot_offset = Vector2(125, 175)
+
+[node name="CardBg" type="TextureRect" parent="PlayerDeck/Card"]
+self_modulate = Color(0.741176, 0.647059, 0.513726, 1)
+clip_children = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xt7wa")
+
+[node name="Margin" type="Panel" parent="PlayerDeck/Card/CardBg"]
+self_modulate = Color(0.45098, 0.396078, 0.290196, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8e65m")
+
+[node name="HSeparator" type="TextureRect" parent="PlayerDeck/Card/CardBg"]
+self_modulate = Color(0.45098, 0.396078, 0.290196, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_5pmd5")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Dirt" type="TextureRect" parent="PlayerDeck/Card/CardBg"]
+self_modulate = Color(0.352941, 0, 0.00784314, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_ys5bb")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="PlayerDeck"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -280.0
+offset_right = 116.0
+offset_bottom = -152.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.67451, 0.192157, 0.141176, 1)
+theme_override_fonts/font = ExtResource("8_y2sjp")
+theme_override_font_sizes/font_size = 128
+text = "Deck"
+
+[node name="PlayerHand" type="Node2D" parent="."]
+position = Vector2(576, 625)
+script = ExtResource("6_nb6mr")
+maxRange = 230
+maxHeight = 15
+spreadCurve = SubResource("Curve_iaogo")
+heightCurve = SubResource("Curve_lw6ss")
+rotationCurve = SubResource("Curve_865hs")
+
+[node name="CardBase" parent="PlayerHand" instance=ExtResource("10_tixvh")]
+position = Vector2(346, 640)
+rotation = -0.174533
+scale = Vector2(0.45, 0.45)
+inHandScale = 0.45
+inGameScale = 0.35
+
+[node name="CardBase2" parent="PlayerHand" instance=ExtResource("10_tixvh")]
+position = Vector2(422.667, 632.778)
+rotation = -0.148676
+scale = Vector2(0.45, 0.45)
+inHandScale = 0.45
+inGameScale = 0.35
+
+[node name="CardBase3" parent="PlayerHand" instance=ExtResource("10_tixvh")]
+position = Vector2(499.333, 627.222)
+rotation = -0.0840344
+scale = Vector2(0.45, 0.45)
+inHandScale = 0.45
+inGameScale = 0.35
+
+[node name="CardBase4" parent="PlayerHand" instance=ExtResource("10_tixvh")]
+position = Vector2(576, 625)
+scale = Vector2(0.45, 0.45)
+inHandScale = 0.45
+inGameScale = 0.35
+
+[node name="CardBase5" parent="PlayerHand" instance=ExtResource("10_tixvh")]
+position = Vector2(652.667, 627.222)
+rotation = 0.0840344
+scale = Vector2(0.45, 0.45)
+inHandScale = 0.45
+inGameScale = 0.35
+
+[node name="CardBase6" parent="PlayerHand" instance=ExtResource("10_tixvh")]
+position = Vector2(729.333, 632.778)
+rotation = 0.148676
+scale = Vector2(0.45, 0.45)
+inHandScale = 0.45
+inGameScale = 0.35
+
+[node name="CardBase7" parent="PlayerHand" instance=ExtResource("10_tixvh")]
+position = Vector2(806, 640)
+rotation = 0.174533
+scale = Vector2(0.45, 0.45)
+inHandScale = 0.45
+inGameScale = 0.35
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="BgLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="Background" type="TextureRect" parent="BgLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_4gu4q")
+
+[node name="Label" type="Label" parent="BgLayer/Background"]
+self_modulate = Color(0.321569, 0.282353, 0.223529, 0.337255)
+layout_mode = 0
+offset_left = 55.0
+offset_top = 238.0
+offset_right = 500.0
+offset_bottom = 298.0
+theme_override_fonts/font = ExtResource("10_mx8mn")
+theme_override_font_sizes/font_size = 68
+text = "PLACEHOLDER"
+
+[node name="PlayerArea" type="Control" parent="BgLayer"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -151.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="PlayerCardsArea" type="ReferenceRect" parent="BgLayer/PlayerArea"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -104.0
+offset_right = 300.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+border_width = 2.0
+
+[node name="PlayerHealth" type="ReferenceRect" parent="BgLayer/PlayerArea"]
+custom_minimum_size = Vector2(175, 175)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 53.0
+offset_top = -99.5
+offset_right = 228.0
+offset_bottom = 75.5
+grow_vertical = 2
+mouse_filter = 2
+border_width = 2.0
+
+[node name="OponentArea" type="Control" parent="BgLayer"]
+custom_minimum_size = Vector2(0, 151)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="OponentCardsArea" type="ReferenceRect" parent="BgLayer/OponentArea"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -223.0
+offset_right = 300.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+border_width = 2.0
+
+[node name="OponentHealth" type="ReferenceRect" parent="BgLayer/OponentArea"]
+custom_minimum_size = Vector2(175, 175)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = -74.5
+offset_right = 223.0
+offset_bottom = 100.5
+grow_vertical = 2
+mouse_filter = 2
+border_width = 2.0
+
+[node name="HSeparator" type="HSeparator" parent="BgLayer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -26.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_iyjun")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="BgLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -299.0
+offset_top = 2.0
+offset_right = 301.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScaleRef" type="TextureRect" parent="BgLayer"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.258824)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_i1n1x")
+expand_mode = 1
+
+[node name="screenRes" type="Label" parent="."]
+offset_left = 880.0
+offset_top = 231.0
+offset_right = 1038.0
+offset_bottom = 298.0
+text = "1152px width
+648px height"
+label_settings = ExtResource("5_iql2i")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Health" type="Label" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -477.0
+offset_top = 217.0
+offset_right = -393.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.67451, 0.192157, 0.141176, 1)
+theme_override_fonts/font = ExtResource("8_y2sjp")
+theme_override_font_sizes/font_size = 48
+text = "2000"
+
+[node name="TweenCheatsheet" type="Sprite2D" parent="."]
+position = Vector2(1592, 371)
+scale = Vector2(0.453913, 0.453913)
+texture = ExtResource("14_wv4cx")
+
+[connection signal="addCard" from="PlayerDeck" to="PlayerHand" method="_on_player_deck_add_card"]
+[connection signal="noCardLeft" from="PlayerDeck" to="." method="_on_player_deck_no_card_left"]

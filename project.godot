@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 leftclick={
@@ -27,3 +31,4 @@ leftclick={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.160784, 0.141176, 0.0941176, 1)
