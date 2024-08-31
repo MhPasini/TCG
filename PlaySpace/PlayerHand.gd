@@ -4,6 +4,7 @@ extends Node2D
 const cardBase = preload("res://Cards/card_base.tscn")
 const playerData := preload("res://Data/PlayerData.tres")
 
+
 @export_group('Hand Fan Variables')
 @export var maxRange = 200 : set = _update_range
 @export var maxHeight = 30 : set = _update_height
