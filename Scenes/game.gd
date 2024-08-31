@@ -10,6 +10,7 @@ const noCardDrawDamage := 100
 @onready var player_deck = $PlayerDeck
 @onready var health = $UI/Health
 @onready var fill_meter: ShaderMaterial = $UI/HealthOrb/FillMeter.material
+@onready var game_over = $GameOver
 
 # CONTROLAR OS TURNOS, ENVIAR O COMANDO PARA PEGAR CARTAS
 # 
@@ -36,6 +37,7 @@ func damagePlayer(amount: int) -> void:
 	if playerData.health <= 0:
 		#add_child(game_over_scene)
 		print("GAME OVER")
+		game_over.game_over()
 
 func _on_player_deck_no_card_left():
 	damagePlayer(noCardDrawDamage)

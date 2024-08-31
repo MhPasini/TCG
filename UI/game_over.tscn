@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://wmjmm5flg3h6"]
+
+[ext_resource type="Script" path="res://Scenes/GameOver.gd" id="1_h5pa4"]
+[ext_resource type="FontFile" uid="uid://ieeropj2v03b" path="res://Fonts/CompassPro.ttf" id="2_a0k5j"]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_h5pa4")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0, 0, 0, 0.505882)
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1152.0
+offset_bottom = 645.0
+theme_override_colors/font_color = Color(0.67451, 0.192157, 0.141176, 1)
+theme_override_colors/font_shadow_color = Color(0.341176, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_a0k5j")
+theme_override_font_sizes/font_size = 55
+text = "You Died"
+horizontal_alignment = 1
+vertical_alignment = 1

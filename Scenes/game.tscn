@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://duh852muqieou"]
+[gd_scene load_steps=29 format=3 uid="uid://duh852muqieou"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_b7kh8"]
 [ext_resource type="PackedScene" uid="uid://4isxlpd3n4we" path="res://PlaySpace/play_space.tscn" id="1_hr1vi"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://c4jnb0swmyhfd" path="res://Assets/GlassOrb.png" id="14_7enrv"]
 [ext_resource type="Shader" uid="uid://bwt0wk7yspcta" path="res://Shaders/dualWave.tres" id="14_8jv11"]
 [ext_resource type="Texture2D" uid="uid://bnhy5b0frl0o1" path="res://tween_cheatsheet.webp" id="14_wv4cx"]
+[ext_resource type="Script" path="res://Scenes/GameOver.gd" id="17_uucq0"]
+[ext_resource type="FontFile" uid="uid://ieeropj2v03b" path="res://Fonts/CompassPro.ttf" id="18_vey2b"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8e65m"]
 texture = ExtResource("5_hksgt")
@@ -470,6 +472,27 @@ text = "2000"
 position = Vector2(1592, 371)
 scale = Vector2(0.453913, 0.453913)
 texture = ExtResource("14_wv4cx")
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+script = ExtResource("17_uucq0")
+
+[node name="Panel" type="Panel" parent="GameOver"]
+modulate = Color(0, 0, 0, 0.505882)
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="GameOver"]
+offset_left = 429.0
+offset_top = 243.0
+offset_right = 728.0
+offset_bottom = 323.0
+theme_override_colors/font_color = Color(0.67451, 0.192157, 0.141176, 1)
+theme_override_colors/font_shadow_color = Color(0.341176, 0, 0, 1)
+theme_override_fonts/font = ExtResource("18_vey2b")
+theme_override_font_sizes/font_size = 85
+text = "You Died"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="addCard" from="PlayerDeck" to="PlayerHand" method="_on_player_deck_add_card"]
 [connection signal="noCardLeft" from="PlayerDeck" to="." method="_on_player_deck_no_card_left"]
