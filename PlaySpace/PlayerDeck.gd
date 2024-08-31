@@ -15,10 +15,10 @@ func _ready():
 func drawCard() -> void:
 	var newCard = playerData.deck.pop_back()
 	if newCard != null:
-		playerData.hand.append(newCard)
 		emit_signal("addCard", newCard)
 		deckSize -= 1
 	else:
+		print("Deck is Empty!")
 		emit_signal("noCardLeft")
 
 func shuffleDeck() -> void:
@@ -28,3 +28,5 @@ func _setDeckSize(size) -> void:
 	deckSize = size
 	if size == 0:
 		hide()
+	else:
+		show()

@@ -24,6 +24,7 @@ func _ready():
 
 func spawnCard(card:String) -> void:
 	var newCard = cardBase.instantiate()
+	playerData.hand.append(newCard)
 	newCard.cardName = card
 	newCard.scale *= inHandScale
 	newCard.position = game.player_deck.position
@@ -46,12 +47,20 @@ func calcCardsPos() -> void:
 			var rot = rotationCurve.sample(handRatio) * maxAngle / posAjust
 			card.tweenToPosition(pos, rot)
 
+func removeCard(card:BaseCard) -> void:
+	if is_instance_valid(card): # checks if the card really exist
+		playerData.hand.erase(card) # removes the card from hand array
+		card.queue_free() # deletes card scene
+		# wait for one process_frame, makes sure that the card was removed before organizing.
+		await get_tree().process_frame 
+		calcCardsPos() # re-organize cards position
+
 func _on_player_deck_add_card(card:String) -> void:
 	spawnCard(card)
 
 
 
-######### TESTING ###########
+######### TESTING ########################
 
 func _update_range(v) ->void:
 	maxRange = v
@@ -64,3 +73,5 @@ func _update_height(v) ->void:
 func _update_angle(v) ->void:
 	maxAngle = v
 	calcCardsPos()
+
+##########################################

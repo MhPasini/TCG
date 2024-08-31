@@ -18,10 +18,6 @@ const noCardDrawDamage := 100
 func _ready():
 	fill_meter.set_shader_parameter('progress', 1.0)
 
-func _unhandled_input(_event):
-	if Input.is_action_just_released("leftclick"):
-		drawCard()
-
 func drawCard() -> void:
 	player_deck.drawCard()
 
@@ -41,3 +37,30 @@ func damagePlayer(amount: int) -> void:
 
 func _on_player_deck_no_card_left():
 	damagePlayer(noCardDrawDamage)
+
+
+
+######### Testing area #################################
+func _on_draw_card_btn_pressed():
+	drawCard()
+
+func _on_remove_card_btn_pressed():
+	# warning if hand is empty, it's ok
+	player_hand.removeCard(player_hand.get_child(0)) 
+
+func _on_game_over_btn_pressed():
+	game_over.game_over()
+
+func _on_add_deck_card_btn_pressed():
+	var cardName = CardDatabase.CARDS.pick_random()
+	print("Card %s added to deck" % cardName)
+	playerData.deck.append(cardName)
+	player_deck.deckSize += 1
+
+########################################################
+
+
+
+
+
+

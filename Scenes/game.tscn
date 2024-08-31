@@ -474,6 +474,7 @@ scale = Vector2(0.453913, 0.453913)
 texture = ExtResource("14_wv4cx")
 
 [node name="GameOver" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("17_uucq0")
 
 [node name="Panel" type="Panel" parent="GameOver"]
@@ -494,5 +495,89 @@ text = "You Died"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TestArea" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="TestBtns" type="Control" parent="TestArea"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="DrawCardBtn" type="Button" parent="TestArea/TestBtns"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -509.5
+offset_top = 116.5
+offset_right = -434.5
+offset_bottom = 139.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_vey2b")
+theme_override_font_sizes/font_size = 16
+text = "draw card"
+
+[node name="RemoveCardBtn" type="Button" parent="TestArea/TestBtns"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -428.5
+offset_top = 116.5
+offset_right = -343.5
+offset_bottom = 139.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_vey2b")
+theme_override_font_sizes/font_size = 16
+text = "remove card"
+
+[node name="GameOverBtn" type="Button" parent="TestArea/TestBtns"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -428.5
+offset_top = 84.5
+offset_right = -343.5
+offset_bottom = 107.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_vey2b")
+theme_override_font_sizes/font_size = 16
+text = "Game Over"
+
+[node name="AddDeckCardBtn" type="Button" parent="TestArea/TestBtns"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 377.5
+offset_top = 100.5
+offset_right = 494.5
+offset_bottom = 123.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_vey2b")
+theme_override_font_sizes/font_size = 16
+text = "add card to deck"
+
 [connection signal="addCard" from="PlayerDeck" to="PlayerHand" method="_on_player_deck_add_card"]
 [connection signal="noCardLeft" from="PlayerDeck" to="." method="_on_player_deck_no_card_left"]
+[connection signal="pressed" from="TestArea/TestBtns/DrawCardBtn" to="." method="_on_draw_card_btn_pressed"]
+[connection signal="pressed" from="TestArea/TestBtns/RemoveCardBtn" to="." method="_on_remove_card_btn_pressed"]
+[connection signal="pressed" from="TestArea/TestBtns/GameOverBtn" to="." method="_on_game_over_btn_pressed"]
+[connection signal="pressed" from="TestArea/TestBtns/AddDeckCardBtn" to="." method="_on_add_deck_card_btn_pressed"]

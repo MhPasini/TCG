@@ -5,6 +5,8 @@ enum {Ghoul, Cultist, MinorDemon}
 
 # card = ['type', 'name', cost, atk, health, 'special', 'description']
 
+const CARDS = ['Ghoul', 'Cultist', 'MinorDemon']
+
 const DATA = {
 	Ghoul :
 		['Units', 'Ghoul', 200, 350, 150, 'None', 'Descrição da habilidade aqui.'],
