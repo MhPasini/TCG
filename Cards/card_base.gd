@@ -59,3 +59,7 @@ func _on_detection_area_mouse_entered():
 func _on_detection_area_mouse_exited():
 	removeFocus()
 
+func _on_detection_area_gui_input(event):
+	if event is InputEvent:
+		if event.is_action_pressed("leftclick"):
+			print(cardInfo)
