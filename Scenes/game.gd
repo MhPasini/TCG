@@ -4,6 +4,8 @@ extends Node
 const cardBase = preload("res://Cards/card_base.tscn")
 const playerData := preload("res://Data/PlayerData.tres")
 
+const noCardDrawDamage := 100
+
 @onready var player_hand = $PlayerHand
 @onready var player_deck = $PlayerDeck
 @onready var health = $UI/Health
@@ -18,8 +20,8 @@ func _unhandled_input(_event):
 func drawCard() -> void:
 	player_deck.drawCard()
 
-func damagePlayer() -> void:
-	playerData.health -= 100
+func damagePlayer(amount: int) -> void:
+	playerData.health -= amount
 	health.text = "%04d" % playerData.health
 	#calls for animation and stuff
 	if playerData.health <= 0:
@@ -27,4 +29,4 @@ func damagePlayer() -> void:
 		print("GAME OVER")
 
 func _on_player_deck_no_card_left():
-	damagePlayer()
+	damagePlayer(noCardDrawDamage)
