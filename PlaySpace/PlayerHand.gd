@@ -28,6 +28,7 @@ func spawnCard(card:String) -> void:
 	newCard.scale *= inHandScale
 	newCard.position = game.player_deck.position
 	add_child(newCard)
+	move_child(newCard, 0)
 	handSize = playerData.hand.size()
 	calcCardsPos()
 

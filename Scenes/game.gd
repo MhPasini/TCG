@@ -34,7 +34,7 @@ func damagePlayer(amount: int) -> void:
 	##############################################################
 	
 	if playerData.health <= 0:
-		#game over
+		#add_child(game_over_scene)
 		print("GAME OVER")
 
 func _on_player_deck_no_card_left():

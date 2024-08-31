@@ -28,7 +28,7 @@ axis_stretch_vertical = 1
 
 [sub_resource type="Curve" id="Curve_iaogo"]
 min_value = -1.0
-_data = [Vector2(0.00561798, 1), 0.0, -2.0113, 0, 1, Vector2(1, -1), -2.0113, 0.0, 1, 0]
+_data = [Vector2(0, 1), 0.0, -2.0, 0, 1, Vector2(1, -1), -2.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_lw6ss"]
@@ -180,39 +180,95 @@ spreadCurve = SubResource("Curve_iaogo")
 heightCurve = SubResource("Curve_lw6ss")
 rotationCurve = SubResource("Curve_865hs")
 
-[node name="CardBase" parent="PlayerHand" instance=ExtResource("10_tixvh")]
+[node name="CardBase7" parent="PlayerHand" instance=ExtResource("10_tixvh")]
 position = Vector2(806, 640)
 rotation = 0.174533
 scale = Vector2(0.45, 0.45)
 
-[node name="CardBase2" parent="PlayerHand" instance=ExtResource("10_tixvh")]
-position = Vector2(731.499, 632.778)
+[node name="Label" type="Label" parent="PlayerHand/CardBase7"]
+offset_left = -23.3227
+offset_top = -162.068
+offset_right = 31.6773
+offset_bottom = -30.0677
+theme_override_font_sizes/font_size = 96
+text = "7"
+
+[node name="CardBase6" parent="PlayerHand" instance=ExtResource("10_tixvh")]
+position = Vector2(729.333, 632.778)
 rotation = 0.148676
 scale = Vector2(0.45, 0.45)
 
-[node name="CardBase3" parent="PlayerHand" instance=ExtResource("10_tixvh")]
-position = Vector2(654.399, 627.222)
+[node name="Label" type="Label" parent="PlayerHand/CardBase6"]
+offset_left = -23.3227
+offset_top = -162.068
+offset_right = 31.6773
+offset_bottom = -30.0677
+theme_override_font_sizes/font_size = 96
+text = "6"
+
+[node name="CardBase5" parent="PlayerHand" instance=ExtResource("10_tixvh")]
+position = Vector2(652.667, 627.222)
 rotation = 0.0840344
 scale = Vector2(0.45, 0.45)
 
+[node name="Label" type="Label" parent="PlayerHand/CardBase5"]
+offset_left = -23.3227
+offset_top = -162.068
+offset_right = 31.6773
+offset_bottom = -30.0677
+theme_override_font_sizes/font_size = 96
+text = "5"
+
 [node name="CardBase4" parent="PlayerHand" instance=ExtResource("10_tixvh")]
-position = Vector2(577.299, 625)
+position = Vector2(576, 625)
 scale = Vector2(0.45, 0.45)
 
-[node name="CardBase5" parent="PlayerHand" instance=ExtResource("10_tixvh")]
-position = Vector2(500.2, 627.222)
+[node name="Label" type="Label" parent="PlayerHand/CardBase4"]
+offset_left = -23.3227
+offset_top = -162.068
+offset_right = 31.6773
+offset_bottom = -30.0677
+theme_override_font_sizes/font_size = 96
+text = "4"
+
+[node name="CardBase3" parent="PlayerHand" instance=ExtResource("10_tixvh")]
+position = Vector2(499.333, 627.222)
 rotation = -0.0840344
 scale = Vector2(0.45, 0.45)
 
-[node name="CardBase6" parent="PlayerHand" instance=ExtResource("10_tixvh")]
-position = Vector2(423.1, 632.778)
+[node name="Label" type="Label" parent="PlayerHand/CardBase3"]
+offset_left = -23.3227
+offset_top = -162.068
+offset_right = 31.6773
+offset_bottom = -30.0677
+theme_override_font_sizes/font_size = 96
+text = "3"
+
+[node name="CardBase2" parent="PlayerHand" instance=ExtResource("10_tixvh")]
+position = Vector2(422.667, 632.778)
 rotation = -0.148676
 scale = Vector2(0.45, 0.45)
 
-[node name="CardBase7" parent="PlayerHand" instance=ExtResource("10_tixvh")]
+[node name="Label" type="Label" parent="PlayerHand/CardBase2"]
+offset_left = -23.3227
+offset_top = -162.068
+offset_right = 31.6773
+offset_bottom = -30.0677
+theme_override_font_sizes/font_size = 96
+text = "2"
+
+[node name="CardBase" parent="PlayerHand" instance=ExtResource("10_tixvh")]
 position = Vector2(346, 640)
 rotation = -0.174533
 scale = Vector2(0.45, 0.45)
+
+[node name="Label" type="Label" parent="PlayerHand/CardBase"]
+offset_left = -23.3227
+offset_top = -162.068
+offset_right = 31.6773
+offset_bottom = -30.0677
+theme_override_font_sizes/font_size = 96
+text = "1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

@@ -36,6 +36,7 @@ func tweenToPosition(pos:Vector2, rot:float) -> void:
 func focusSelf() -> void:
 	cardMaterial.set_shader_parameter('outline_on', true)
 	scale *= 1.25
+	handIndex = get_index()
 	move_to_front()
 	var t = create_tween().set_parallel()
 	t.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
@@ -53,10 +54,10 @@ func removeFocus() -> void:
 	t.tween_property(self, 'rotation_degrees', restRot, 0.4)
 
 
-func _on_detection_area_mouse_entered():
+func _on_detection_area_mouse_entered() -> void:
 	focusSelf()
 
-func _on_detection_area_mouse_exited():
+func _on_detection_area_mouse_exited() -> void:
 	removeFocus()
 
 func _on_detection_area_gui_input(event):
