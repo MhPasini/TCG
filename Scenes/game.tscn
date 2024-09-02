@@ -177,6 +177,33 @@ theme_override_fonts/font = ExtResource("8_y2sjp")
 theme_override_font_sizes/font_size = 128
 text = "Deck"
 
+[node name="pullFromDeck" type="Button" parent="PlayerDeck"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -127.0
+offset_top = -176.0
+offset_right = 124.0
+offset_bottom = 171.0
+
+[node name="CardCount" type="Label" parent="PlayerDeck"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -24.0
+offset_right = 10.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_y2sjp")
+theme_override_font_sizes/font_size = 144
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PlayerHand" type="Node2D" parent="."]
 position = Vector2(576, 625)
 script = ExtResource("6_nb6mr")
@@ -508,6 +535,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -6.0
+offset_right = -9.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -582,6 +613,7 @@ text = "add card to deck"
 
 [connection signal="addCard" from="PlayerDeck" to="PlayerHand" method="_on_player_deck_add_card"]
 [connection signal="noCardLeft" from="PlayerDeck" to="." method="_on_player_deck_no_card_left"]
+[connection signal="pressed" from="PlayerDeck/pullFromDeck" to="." method="_on_pull_from_deck_pressed"]
 [connection signal="pressed" from="TestArea/TestBtns/DrawCardBtn" to="." method="_on_draw_card_btn_pressed"]
 [connection signal="pressed" from="TestArea/TestBtns/RemoveCardBtn" to="." method="_on_remove_card_btn_pressed"]
 [connection signal="pressed" from="TestArea/TestBtns/GameOverBtn" to="." method="_on_game_over_btn_pressed"]
