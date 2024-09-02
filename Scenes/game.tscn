@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cphdqkm0pefv7" path="res://Cards/card_base.tscn" id="10_tixvh"]
 [ext_resource type="Texture2D" uid="uid://bd2lra01m5t3c" path="res://gwentRef.jpg" id="11_i1n1x"]
 [ext_resource type="Texture2D" uid="uid://c4jnb0swmyhfd" path="res://Assets/GlassOrb.png" id="14_7enrv"]
-[ext_resource type="Shader" path="res://Shaders/dualWave.tres" id="14_8jv11"]
+[ext_resource type="Shader" uid="uid://bwt0wk7yspcta" path="res://Shaders/dualWave.tres" id="14_8jv11"]
 [ext_resource type="Texture2D" uid="uid://bnhy5b0frl0o1" path="res://tween_cheatsheet.webp" id="14_wv4cx"]
 [ext_resource type="Script" path="res://Scenes/GameOver.gd" id="17_uucq0"]
 [ext_resource type="FontFile" uid="uid://ieeropj2v03b" path="res://Fonts/CompassPro.ttf" id="18_vey2b"]
@@ -183,6 +183,26 @@ offset_left = -127.0
 offset_top = -176.0
 offset_right = 124.0
 offset_bottom = 171.0
+
+[node name="CardCount" type="Label" parent="PlayerDeck"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -24.0
+offset_right = 10.5
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_y2sjp")
+theme_override_font_sizes/font_size = 144
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayerHand" type="Node2D" parent="."]
 position = Vector2(576, 625)
@@ -515,6 +535,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -6.0
+offset_right = -9.0
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

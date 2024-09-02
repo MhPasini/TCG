@@ -26,6 +26,9 @@ func shuffleDeck() -> void:
 
 func _setDeckSize(size) -> void:
 	deckSize = size
+	
+	$CardCount.text = str(size)
+	
 	if size == 0:
 		hide()
 	else:

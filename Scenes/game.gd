@@ -46,7 +46,6 @@ func _on_pull_from_deck_pressed():
 	drawCard()
 
 
-
 ######### Testing area #################################
 func _on_draw_card_btn_pressed():
 	drawCard()
