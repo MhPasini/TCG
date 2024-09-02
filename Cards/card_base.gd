@@ -8,6 +8,9 @@ var inHand := true
 var restPos : Vector2
 var restRot : float
 var handIndex : int
+var pressed := false
+var pickedUp := false
+var relative_pos := Vector2.ZERO
 
 @export var inHandScale := 0.45
 @export var inGameScale := 0.35
@@ -23,6 +26,9 @@ func _ready() -> void:
 		card.loadCardInfo(cardImg, cardTypeImg, cardInfo)
 		handIndex = get_index()
 
+func _process(delta):
+	if pickedUp:
+		global_position = get_global_mouse_position() + relative_pos
 
 func tweenToPosition(pos:Vector2, rot:float) -> void:
 	var t = create_tween().set_parallel()
@@ -55,12 +61,25 @@ func removeFocus() -> void:
 
 
 func _on_detection_area_mouse_entered() -> void:
-	focusSelf()
+	if inHand and not pickedUp:
+		focusSelf()
 
 func _on_detection_area_mouse_exited() -> void:
-	removeFocus()
+	if inHand and not pickedUp:
+		removeFocus()
 
 func _on_detection_area_gui_input(event):
 	if event is InputEvent:
 		if event.is_action_pressed("leftclick"):
+			print('pressed')
+			pressed = true
+			relative_pos =  global_position - get_global_mouse_position()
+		elif event.is_action_released("leftclick"):
+			print('released')
+			pressed = false
 			print(cardInfo)
+			if pickedUp and inHand:
+				pickedUp = false
+				removeFocus()
+		if event is InputEventMouseMotion and pressed:
+			pickedUp = true
