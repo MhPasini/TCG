@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cphdqkm0pefv7" path="res://Cards/card_base.tscn" id="10_tixvh"]
 [ext_resource type="Texture2D" uid="uid://bd2lra01m5t3c" path="res://gwentRef.jpg" id="11_i1n1x"]
 [ext_resource type="Texture2D" uid="uid://c4jnb0swmyhfd" path="res://Assets/GlassOrb.png" id="14_7enrv"]
-[ext_resource type="Shader" uid="uid://bwt0wk7yspcta" path="res://Shaders/dualWave.tres" id="14_8jv11"]
+[ext_resource type="Shader" path="res://Shaders/dualWave.tres" id="14_8jv11"]
 [ext_resource type="Texture2D" uid="uid://bnhy5b0frl0o1" path="res://tween_cheatsheet.webp" id="14_wv4cx"]
 [ext_resource type="Script" path="res://Scenes/GameOver.gd" id="17_uucq0"]
 [ext_resource type="FontFile" uid="uid://ieeropj2v03b" path="res://Fonts/CompassPro.ttf" id="18_vey2b"]
@@ -176,6 +176,13 @@ theme_override_colors/font_color = Color(0.67451, 0.192157, 0.141176, 1)
 theme_override_fonts/font = ExtResource("8_y2sjp")
 theme_override_font_sizes/font_size = 128
 text = "Deck"
+
+[node name="pullFromDeck" type="Button" parent="PlayerDeck"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -127.0
+offset_top = -176.0
+offset_right = 124.0
+offset_bottom = 171.0
 
 [node name="PlayerHand" type="Node2D" parent="."]
 position = Vector2(576, 625)
@@ -582,6 +589,7 @@ text = "add card to deck"
 
 [connection signal="addCard" from="PlayerDeck" to="PlayerHand" method="_on_player_deck_add_card"]
 [connection signal="noCardLeft" from="PlayerDeck" to="." method="_on_player_deck_no_card_left"]
+[connection signal="pressed" from="PlayerDeck/pullFromDeck" to="." method="_on_pull_from_deck_pressed"]
 [connection signal="pressed" from="TestArea/TestBtns/DrawCardBtn" to="." method="_on_draw_card_btn_pressed"]
 [connection signal="pressed" from="TestArea/TestBtns/RemoveCardBtn" to="." method="_on_remove_card_btn_pressed"]
 [connection signal="pressed" from="TestArea/TestBtns/GameOverBtn" to="." method="_on_game_over_btn_pressed"]
