@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cphdqkm0pefv7"]
+[gd_scene load_steps=6 format=3 uid="uid://cphdqkm0pefv7"]
 
 [ext_resource type="Script" path="res://Cards/card_base.gd" id="1_t87wk"]
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="15_1wl64"]
@@ -10,6 +10,9 @@ shader = ExtResource("15_1wl64")
 shader_parameter/outline_on = false
 shader_parameter/outline_color = Color(1, 0.192157, 0.141176, 1)
 shader_parameter/border_size = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ftqwx"]
+radius = 30.0
 
 [node name="CardBase" type="Node2D"]
 top_level = true
@@ -47,6 +50,13 @@ offset_right = 115.0
 offset_bottom = 165.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ftqwx")
 
 [connection signal="gui_input" from="DetectionArea" to="." method="_on_detection_area_gui_input"]
 [connection signal="mouse_entered" from="DetectionArea" to="." method="_on_detection_area_mouse_entered"]

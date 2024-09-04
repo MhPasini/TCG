@@ -1,4 +1,3 @@
-@tool
 extends Node2D
 class_name BaseCard
 
@@ -10,6 +9,7 @@ var restRot : float
 var handIndex : int
 var pressed := false
 var pickedUp := false
+var played := false
 var relative_pos := Vector2.ZERO
 
 @export var inHandScale := 0.45
@@ -21,16 +21,20 @@ var relative_pos := Vector2.ZERO
 @onready var card = $SubViewportContainer/SubViewport/Card
 @onready var cardMaterial = $SubViewportContainer.material as ShaderMaterial
 
+signal playSelf
+
+
 func _ready() -> void:
-	if !Engine.is_editor_hint():
-		card.loadCardInfo(cardImg, cardTypeImg, cardInfo)
-		handIndex = get_index()
+	card.loadCardInfo(cardImg, cardTypeImg, cardInfo)
+	handIndex = get_index()
+
 
 func _process(delta):
 	if pickedUp:
 		global_position = get_global_mouse_position() + relative_pos
 
-func tweenToPosition(pos:Vector2, rot:float) -> void:
+
+func tweenToPosition(pos:Vector2, rot:float = 0.0) -> void:
 	var t = create_tween().set_parallel()
 	t.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	t.tween_property(self, 'position', pos, 0.5)
@@ -68,18 +72,28 @@ func _on_detection_area_mouse_exited() -> void:
 	if inHand and not pickedUp:
 		removeFocus()
 
+func playCard() -> void:
+	played = true
+	pickedUp = false
+	scale = Vector2.ONE * inGameScale
+	cardMaterial.set_shader_parameter('outline_on', false)
+	playSelf.emit(self)
+	# call card effects
+
 func _on_detection_area_gui_input(event):
 	if event is InputEvent:
 		if event.is_action_pressed("leftclick"):
 			print('pressed')
 			pressed = true
 			relative_pos =  global_position - get_global_mouse_position()
-		elif event.is_action_released("leftclick"):
+		elif event.is_action_released("leftclick") and pressed:
 			print('released')
 			pressed = false
 			print(cardInfo)
 			if pickedUp and inHand:
 				pickedUp = false
 				removeFocus()
-		if event is InputEventMouseMotion and pressed:
+			elif pickedUp and not inHand:
+				playCard()
+		if event is InputEventMouseMotion and pressed and not played:
 			pickedUp = true
