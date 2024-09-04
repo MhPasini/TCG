@@ -11,6 +11,7 @@ const noCardDrawDamage := 100
 @onready var health = $UI/Health
 @onready var fill_meter: ShaderMaterial = $UI/HealthOrb/FillMeter.material
 @onready var game_over = $GameOver
+@onready var camera = $Camera2D
 
 # CONTROLAR OS TURNOS, ENVIAR O COMANDO PARA PEGAR CARTAS
 # 
@@ -25,6 +26,7 @@ func damagePlayer(amount: int) -> void:
 	playerData.health -= amount
 
 	animateHealthBalance()
+	camera.shake()
 	
 	if playerData.health <= 0:
 		#add_child(game_over_scene)
