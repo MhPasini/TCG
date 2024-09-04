@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://6hwold8askq1" path="res://Fonts/FutilePro.ttf" id="10_mx8mn"]
 [ext_resource type="PackedScene" uid="uid://cphdqkm0pefv7" path="res://Cards/card_base.tscn" id="10_tixvh"]
 [ext_resource type="Texture2D" uid="uid://bd2lra01m5t3c" path="res://gwentRef.jpg" id="11_i1n1x"]
+[ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="11_lcmaj"]
 [ext_resource type="Texture2D" uid="uid://c4jnb0swmyhfd" path="res://Assets/GlassOrb.png" id="14_7enrv"]
 [ext_resource type="Shader" uid="uid://bwt0wk7yspcta" path="res://Shaders/dualWave.tres" id="14_8jv11"]
 [ext_resource type="Texture2D" uid="uid://bnhy5b0frl0o1" path="res://tween_cheatsheet.webp" id="14_wv4cx"]
@@ -329,9 +330,11 @@ text = "1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+script = ExtResource("11_lcmaj")
 
 [node name="BgLayer" type="CanvasLayer" parent="."]
 layer = -10
+follow_viewport_enabled = true
 
 [node name="Background" type="TextureRect" parent="BgLayer"]
 anchors_preset = 15
@@ -480,6 +483,7 @@ label_settings = ExtResource("5_iql2i")
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = -1
+follow_viewport_enabled = true
 
 [node name="HealthOrb" type="TextureRect" parent="UI"]
 anchors_preset = 2
