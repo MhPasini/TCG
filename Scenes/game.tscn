@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 [gd_scene load_steps=30 format=3 uid="uid://duh852muqieou"]
-=======
-[gd_scene load_steps=31 format=3 uid="uid://duh852muqieou"]
->>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_b7kh8"]
 [ext_resource type="Script" path="res://PlaySpace/play_space.gd" id="2_lkc6m"]
@@ -23,14 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://bnhy5b0frl0o1" path="res://tween_cheatsheet.webp" id="14_wv4cx"]
 [ext_resource type="Script" path="res://Scenes/GameOver.gd" id="17_uucq0"]
 [ext_resource type="FontFile" uid="uid://ieeropj2v03b" path="res://Fonts/CompassPro.ttf" id="18_vey2b"]
-
-[sub_resource type="Curve" id="Curve_f5ygp"]
-min_value = -1.0
-_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7014u"]
-size = Vector2(900, 160)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8e65m"]
 texture = ExtResource("5_hksgt")
@@ -106,31 +94,10 @@ metadata/_snap_enabled = true
 [node name="Game" type="Node"]
 script = ExtResource("1_b7kh8")
 
-[node name="PlaySpace" type="Node" parent="."]
+[node name="PlaySpace" type="Node2D" parent="."]
 script = ExtResource("2_lkc6m")
-maxRange = 450
-spreadCurve = SubResource("Curve_f5ygp")
 
 [node name="Cards" type="Node" parent="PlaySpace"]
-
-[node name="PlayerArea" type="Node2D" parent="PlaySpace"]
-position = Vector2(576, 324)
-
-[node name="Area2D" type="Area2D" parent="PlaySpace/PlayerArea"]
-collision_layer = 0
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaySpace/PlayerArea/Area2D"]
-position = Vector2(1, 82)
-shape = SubResource("RectangleShape2D_7014u")
-debug_color = Color(1, 1, 1, 0.117647)
-
-[node name="Cards" type="Node2D" parent="PlaySpace/PlayerArea"]
-position = Vector2(0, 46)
-
-[node name="CardBase" parent="PlaySpace/PlayerArea/Cards" instance=ExtResource("10_tixvh")]
-top_level = false
-scale = Vector2(0.35, 0.35)
 
 [node name="PlayerDeck" type="Node2D" parent="."]
 position = Vector2(1014, 566)
@@ -247,14 +214,12 @@ spreadCurve = SubResource("Curve_iaogo")
 heightCurve = SubResource("Curve_lw6ss")
 rotationCurve = SubResource("Curve_865hs")
 
-[node name="Cards" type="Node2D" parent="PlayerHand"]
-
-[node name="CardBase7" parent="PlayerHand/Cards" instance=ExtResource("10_tixvh")]
+[node name="CardBase7" parent="PlayerHand" instance=ExtResource("10_tixvh")]
 position = Vector2(806, 640)
 rotation = 0.174533
 scale = Vector2(0.45, 0.45)
 
-[node name="Label" type="Label" parent="PlayerHand/Cards/CardBase7"]
+[node name="Label" type="Label" parent="PlayerHand/CardBase7"]
 offset_left = -23.3227
 offset_top = -162.068
 offset_right = 31.6773
@@ -262,12 +227,12 @@ offset_bottom = -30.0677
 theme_override_font_sizes/font_size = 96
 text = "7"
 
-[node name="CardBase6" parent="PlayerHand/Cards" instance=ExtResource("10_tixvh")]
+[node name="CardBase6" parent="PlayerHand" instance=ExtResource("10_tixvh")]
 position = Vector2(729.333, 632.778)
 rotation = 0.148676
 scale = Vector2(0.45, 0.45)
 
-[node name="Label" type="Label" parent="PlayerHand/Cards/CardBase6"]
+[node name="Label" type="Label" parent="PlayerHand/CardBase6"]
 offset_left = -23.3227
 offset_top = -162.068
 offset_right = 31.6773
@@ -275,12 +240,12 @@ offset_bottom = -30.0677
 theme_override_font_sizes/font_size = 96
 text = "6"
 
-[node name="CardBase5" parent="PlayerHand/Cards" instance=ExtResource("10_tixvh")]
+[node name="CardBase5" parent="PlayerHand" instance=ExtResource("10_tixvh")]
 position = Vector2(652.667, 627.222)
 rotation = 0.0840344
 scale = Vector2(0.45, 0.45)
 
-[node name="Label" type="Label" parent="PlayerHand/Cards/CardBase5"]
+[node name="Label" type="Label" parent="PlayerHand/CardBase5"]
 offset_left = -23.3227
 offset_top = -162.068
 offset_right = 31.6773
@@ -288,11 +253,11 @@ offset_bottom = -30.0677
 theme_override_font_sizes/font_size = 96
 text = "5"
 
-[node name="CardBase4" parent="PlayerHand/Cards" instance=ExtResource("10_tixvh")]
+[node name="CardBase4" parent="PlayerHand" instance=ExtResource("10_tixvh")]
 position = Vector2(576, 625)
 scale = Vector2(0.45, 0.45)
 
-[node name="Label" type="Label" parent="PlayerHand/Cards/CardBase4"]
+[node name="Label" type="Label" parent="PlayerHand/CardBase4"]
 offset_left = -23.3227
 offset_top = -162.068
 offset_right = 31.6773
@@ -300,12 +265,12 @@ offset_bottom = -30.0677
 theme_override_font_sizes/font_size = 96
 text = "4"
 
-[node name="CardBase3" parent="PlayerHand/Cards" instance=ExtResource("10_tixvh")]
+[node name="CardBase3" parent="PlayerHand" instance=ExtResource("10_tixvh")]
 position = Vector2(499.333, 627.222)
 rotation = -0.0840344
 scale = Vector2(0.45, 0.45)
 
-[node name="Label" type="Label" parent="PlayerHand/Cards/CardBase3"]
+[node name="Label" type="Label" parent="PlayerHand/CardBase3"]
 offset_left = -23.3227
 offset_top = -162.068
 offset_right = 31.6773
@@ -313,12 +278,12 @@ offset_bottom = -30.0677
 theme_override_font_sizes/font_size = 96
 text = "3"
 
-[node name="CardBase2" parent="PlayerHand/Cards" instance=ExtResource("10_tixvh")]
+[node name="CardBase2" parent="PlayerHand" instance=ExtResource("10_tixvh")]
 position = Vector2(422.667, 632.778)
 rotation = -0.148676
 scale = Vector2(0.45, 0.45)
 
-[node name="Label" type="Label" parent="PlayerHand/Cards/CardBase2"]
+[node name="Label" type="Label" parent="PlayerHand/CardBase2"]
 offset_left = -23.3227
 offset_top = -162.068
 offset_right = 31.6773
@@ -326,12 +291,12 @@ offset_bottom = -30.0677
 theme_override_font_sizes/font_size = 96
 text = "2"
 
-[node name="CardBase" parent="PlayerHand/Cards" instance=ExtResource("10_tixvh")]
+[node name="CardBase" parent="PlayerHand" instance=ExtResource("10_tixvh")]
 position = Vector2(346, 640)
 rotation = -0.174533
 scale = Vector2(0.45, 0.45)
 
-[node name="Label" type="Label" parent="PlayerHand/Cards/CardBase"]
+[node name="Label" type="Label" parent="PlayerHand/CardBase"]
 offset_left = -23.3227
 offset_top = -162.068
 offset_right = 31.6773
@@ -650,8 +615,6 @@ theme_override_fonts/font = ExtResource("18_vey2b")
 theme_override_font_sizes/font_size = 16
 text = "add card to deck"
 
-[connection signal="area_entered" from="PlaySpace/PlayerArea/Area2D" to="PlaySpace" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="PlaySpace/PlayerArea/Area2D" to="PlaySpace" method="_on_area_2d_area_exited"]
 [connection signal="addCard" from="PlayerDeck" to="PlayerHand" method="_on_player_deck_add_card"]
 [connection signal="noCardLeft" from="PlayerDeck" to="." method="_on_player_deck_no_card_left"]
 [connection signal="pressed" from="PlayerDeck/pullFromDeck" to="." method="_on_pull_from_deck_pressed"]
