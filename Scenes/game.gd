@@ -8,22 +8,23 @@ const noCardDrawDamage := 100
 
 @onready var player_hand = $PlayerHand
 @onready var player_deck = $PlayerDeck
+@onready var play_space = $PlaySpace
 @onready var health = $UI/Health
 @onready var fill_meter: ShaderMaterial = $UI/HealthOrb/FillMeter.material
 @onready var game_over = $GameOver
 
-# CONTROLAR OS TURNOS, ENVIAR O COMANDO PARA PEGAR CARTAS
+# CONTROLAR OS TURNOS, GAMEPLAY GERAL
 # 
 
 func _ready():
-	fill_meter.set_shader_parameter('progress', 1.0)
+	playerData.health = playerData.MAX_HEALTH # set the health to max
+	fill_meter.set_shader_parameter('progress', 1.0) # set the health orb to full
 
 func drawCard() -> void:
 	player_deck.drawCard()
 
 func damagePlayer(amount: int) -> void:
 	playerData.health -= amount
-
 	animateHealthBalance()
 	
 	if playerData.health <= 0:
@@ -33,12 +34,19 @@ func damagePlayer(amount: int) -> void:
 
 func animateHealthBalance():
 	health.text = "%04d" % playerData.health
-	var hp_percent = clampf((playerData.health / 2000.0), 0, 1)
+	var hp_percent = clampf((playerData.health / playerData.MAX_HEALTH), 0, 1)
 	var t = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 	t.tween_property(fill_meter, 'shader_parameter/progress', hp_percent, 0.5)
+	print(hp_percent)
 
 func _on_player_deck_no_card_left():
 	damagePlayer(noCardDrawDamage)
+
+func _on_card_playSelf(card:BaseCard):
+	card.reparent(play_space.cards)
+	await get_tree().process_frame
+	play_space.calcCardsPos()
+	player_hand.calcCardsPos()
 
 # Clicar em cima do baralho puxa uma carta
 # nao sei se essa func deve estar aqui
