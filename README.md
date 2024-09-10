@@ -31,3 +31,24 @@
 ### campo
 - Dividido entre zona de ataque e zona de armadilhas.
 
+# TODO
+- [ ] Inimigo
+  - [ ] Obj player
+  
+- [ ] campo
+  - [ ] Deixar mais alto
+  - [ ] Scroll pra cima quando colocar o mouse no topo da tela
+
+  - [ ] 5 espaços por fileira, 4 fileiras
+  - [ ] Fileira de baixo, cartas magicas e armadilhas.
+  - [ ] Fileira de ciima unidades.
+
+- [ ] Gameplay 
+  - [ ] Turnos
+  - [ ] Cemitério?
+  - [ ] Ataque
+
+- [ ] Sons
+  - [ ] Criar um cena de sons
+  - [ ] Enviar sinais para tocar na cena
+
