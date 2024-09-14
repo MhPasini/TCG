@@ -9,7 +9,7 @@ const noCardDrawDamage := 100
 @onready var player_hand = $PlayerHand
 @onready var player_deck = $PlayerDeck
 @onready var play_space = $PlaySpace
-@onready var health = $UI/Health
+@onready var health = $UI/HealthOrb/Health
 @onready var fill_meter: ShaderMaterial = $UI/HealthOrb/FillMeter.material
 @onready var game_over = $GameOver
 @onready var camera = $Camera2D
@@ -44,11 +44,12 @@ func animateHealthBalance():
 func _on_player_deck_no_card_left():
 	damagePlayer(noCardDrawDamage)
 
-func _on_card_playSelf(card:BaseCard):
-	card.reparent(play_space.cards)
+func _on_card_playSelf(card:BaseCard, slot:Node2D):
+	card.reparent(play_space.playerCards)
 	await get_tree().process_frame
-	play_space.calcCardsPos()
+	card.tweenToPosition(slot.global_position)
 	player_hand.calcCardsPos()
+	slot.isEmpty = false
 
 # Clicar em cima do baralho puxa uma carta
 # nao sei se essa func deve estar aqui

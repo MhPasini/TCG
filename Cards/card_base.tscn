@@ -12,7 +12,7 @@ shader_parameter/outline_color = Color(1, 0.192157, 0.141176, 1)
 shader_parameter/border_size = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ftqwx"]
-radius = 30.0
+radius = 15.0
 
 [node name="CardBase" type="Node2D"]
 top_level = true

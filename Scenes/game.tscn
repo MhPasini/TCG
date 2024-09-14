@@ -20,13 +20,38 @@
 [ext_resource type="Script" path="res://Scenes/GameOver.gd" id="17_uucq0"]
 [ext_resource type="FontFile" uid="uid://ieeropj2v03b" path="res://Fonts/CompassPro.ttf" id="18_vey2b"]
 
-[sub_resource type="Curve" id="Curve_25wip"]
-min_value = -1.0
-_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
-point_count = 2
+[sub_resource type="GDScript" id="GDScript_hcenb"]
+resource_name = "CardSlot"
+script/source = "extends Node2D
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hban6"]
-size = Vector2(900, 190)
+@export_flags('First', 'Second')var row = 1
+var isEmpty := true
+
+@onready var sprite = $Sprite2D
+
+func focus(active:bool) -> void:
+	if active:
+		sprite.modulate = Color.CYAN
+	else:
+		sprite.modulate = Color.WHITE
+
+func _on_area_2d_area_entered(area):
+	if isEmpty:
+		focus(true)
+		var card = area.get_parent() as BaseCard
+		if card.pickedUp:
+			card.inHand = false
+			card.slot = self
+
+func _on_area_2d_area_exited(area):
+	focus(false)
+	var card = area.get_parent() as BaseCard
+	if is_instance_valid(card) and !card.played:
+		card.inHand = true
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qx7eo"]
+size = Vector2(94, 136)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8e65m"]
 texture = ExtResource("5_hksgt")
@@ -104,22 +129,92 @@ script = ExtResource("1_b7kh8")
 
 [node name="PlaySpace" type="Node" parent="."]
 script = ExtResource("2_lkc6m")
-spreadCurve = SubResource("Curve_25wip")
-
-[node name="Area2D" type="Area2D" parent="PlaySpace"]
-position = Vector2(576, 363)
-collision_layer = 0
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaySpace/Area2D"]
-position = Vector2(0, 30)
-shape = SubResource("RectangleShape2D_hban6")
-debug_color = Color(1, 1, 1, 0.137255)
 
 [node name="PlayerArea" type="Node2D" parent="PlaySpace"]
 position = Vector2(576, 363)
 
-[node name="Cards" type="Node2D" parent="PlaySpace/PlayerArea"]
+[node name="Cards" type="Node" parent="PlaySpace/PlayerArea"]
+
+[node name="CardSlots" type="Node2D" parent="PlaySpace/PlayerArea"]
+
+[node name="CardSlot" type="Node2D" parent="PlaySpace/PlayerArea/CardSlots"]
+position = Vector2(-240, 0)
+script = SubResource("GDScript_hcenb")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot"]
+self_modulate = Color(1, 1, 1, 0.498039)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xt7wa")
+
+[node name="Area2D" type="Area2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot"]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot/Area2D"]
+shape = SubResource("RectangleShape2D_qx7eo")
+
+[node name="CardSlot2" type="Node2D" parent="PlaySpace/PlayerArea/CardSlots"]
+position = Vector2(-120, 0)
+script = SubResource("GDScript_hcenb")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot2"]
+self_modulate = Color(1, 1, 1, 0.498039)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xt7wa")
+
+[node name="Area2D" type="Area2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot2"]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot2/Area2D"]
+shape = SubResource("RectangleShape2D_qx7eo")
+
+[node name="CardSlot3" type="Node2D" parent="PlaySpace/PlayerArea/CardSlots"]
+script = SubResource("GDScript_hcenb")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot3"]
+self_modulate = Color(1, 1, 1, 0.498039)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xt7wa")
+
+[node name="Area2D" type="Area2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot3"]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot3/Area2D"]
+shape = SubResource("RectangleShape2D_qx7eo")
+
+[node name="CardSlot4" type="Node2D" parent="PlaySpace/PlayerArea/CardSlots"]
+position = Vector2(120, 0)
+script = SubResource("GDScript_hcenb")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot4"]
+self_modulate = Color(1, 1, 1, 0.498039)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xt7wa")
+
+[node name="Area2D" type="Area2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot4"]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot4/Area2D"]
+shape = SubResource("RectangleShape2D_qx7eo")
+
+[node name="CardSlot5" type="Node2D" parent="PlaySpace/PlayerArea/CardSlots"]
+position = Vector2(240, 0)
+script = SubResource("GDScript_hcenb")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot5"]
+self_modulate = Color(1, 1, 1, 0.498039)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xt7wa")
+
+[node name="Area2D" type="Area2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot5"]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot5/Area2D"]
+shape = SubResource("RectangleShape2D_qx7eo")
 
 [node name="PlayerDeck" type="Node2D" parent="."]
 position = Vector2(1014, 566)
@@ -490,8 +585,8 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 53.0
-offset_top = -175.0
-offset_right = 228.0
+offset_top = -128.0
+offset_right = 181.0
 grow_vertical = 0
 texture = ExtResource("14_7enrv")
 expand_mode = 1
@@ -510,16 +605,17 @@ texture = SubResource("GradientTexture2D_84skl")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Health" type="Label" parent="UI"]
+[node name="Health" type="Label" parent="UI/HealthOrb"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -477.0
-offset_top = 217.0
-offset_right = -393.0
-offset_bottom = 265.0
+offset_left = -41.5
+offset_top = -19.5
+offset_right = 42.5
+offset_bottom = 28.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -639,8 +735,16 @@ theme_override_fonts/font = ExtResource("18_vey2b")
 theme_override_font_sizes/font_size = 16
 text = "add card to deck"
 
-[connection signal="area_entered" from="PlaySpace/Area2D" to="PlaySpace" method="_on_area_2d_area_entered"]
-[connection signal="area_exited" from="PlaySpace/Area2D" to="PlaySpace" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="PlaySpace/PlayerArea/CardSlots/CardSlot/Area2D" to="PlaySpace/PlayerArea/CardSlots/CardSlot" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="PlaySpace/PlayerArea/CardSlots/CardSlot/Area2D" to="PlaySpace/PlayerArea/CardSlots/CardSlot" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="PlaySpace/PlayerArea/CardSlots/CardSlot2/Area2D" to="PlaySpace/PlayerArea/CardSlots/CardSlot2" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="PlaySpace/PlayerArea/CardSlots/CardSlot2/Area2D" to="PlaySpace/PlayerArea/CardSlots/CardSlot2" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="PlaySpace/PlayerArea/CardSlots/CardSlot3/Area2D" to="PlaySpace/PlayerArea/CardSlots/CardSlot3" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="PlaySpace/PlayerArea/CardSlots/CardSlot3/Area2D" to="PlaySpace/PlayerArea/CardSlots/CardSlot3" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="PlaySpace/PlayerArea/CardSlots/CardSlot4/Area2D" to="PlaySpace/PlayerArea/CardSlots/CardSlot4" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="PlaySpace/PlayerArea/CardSlots/CardSlot4/Area2D" to="PlaySpace/PlayerArea/CardSlots/CardSlot4" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="PlaySpace/PlayerArea/CardSlots/CardSlot5/Area2D" to="PlaySpace/PlayerArea/CardSlots/CardSlot5" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="PlaySpace/PlayerArea/CardSlots/CardSlot5/Area2D" to="PlaySpace/PlayerArea/CardSlots/CardSlot5" method="_on_area_2d_area_exited"]
 [connection signal="addCard" from="PlayerDeck" to="PlayerHand" method="_on_player_deck_add_card"]
 [connection signal="noCardLeft" from="PlayerDeck" to="." method="_on_player_deck_no_card_left"]
 [connection signal="pressed" from="PlayerDeck/pullFromDeck" to="." method="_on_pull_from_deck_pressed"]

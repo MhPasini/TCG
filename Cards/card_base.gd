@@ -11,6 +11,7 @@ var pressed := false
 var pickedUp := false
 var played := false
 var relative_pos := Vector2.ZERO
+var slot = null
 
 @export var inHandScale := 0.45
 @export var inGameScale := 0.35
@@ -77,7 +78,7 @@ func playCard() -> void:
 	pickedUp = false
 	scale = Vector2.ONE * inGameScale
 	cardMaterial.set_shader_parameter('outline_on', false)
-	playSelf.emit(self)
+	playSelf.emit(self, slot)
 	# call card effects
 
 func _on_detection_area_gui_input(event):
@@ -92,6 +93,7 @@ func _on_detection_area_gui_input(event):
 			print(cardInfo)
 			if pickedUp and inHand:
 				pickedUp = false
+				slot = null
 				removeFocus()
 			elif pickedUp and not inHand:
 				playCard()
