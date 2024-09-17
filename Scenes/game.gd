@@ -16,10 +16,12 @@ const noCardDrawDamage := 100
 
 # CONTROLAR OS TURNOS, GAMEPLAY GERAL
 # 
+signal play_sound(sound_id: String)
 
 func _ready():
 	playerData.health = playerData.MAX_HEALTH # set the health to max
 	fill_meter.set_shader_parameter('progress', 1.0) # set the health orb to full
+	play_sound.connect(Audio._on_play_sound)
 
 func drawCard() -> void:
 	player_deck.drawCard()
@@ -28,6 +30,7 @@ func damagePlayer(amount: int) -> void:
 	playerData.health -= amount
 	animateHealthBalance()
 	camera.shake()
+	emit_signal("play_sound", "hit_hurt")
 	
 	if playerData.health <= 0:
 		#add_child(game_over_scene)

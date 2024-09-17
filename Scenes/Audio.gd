@@ -5,6 +5,7 @@ var players = []
 
 var sounds = {
 	"draw_card" = preload("res://Sounds/Cards/draw_card.mp3"),
+	"hit_hurt" = preload("res://Sounds/Player/hitHurt.wav"),
 }
 
 func _create_players():

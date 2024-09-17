@@ -49,6 +49,6 @@
   - [ ] Ataque
 
 - [ ] Sons
-  - [ ] Criar um cena de sons
-  - [ ] Enviar sinais para tocar na cena
+  - [x] Criar um cena de sons
+  - [x] Enviar sinais para tocar na cena
 
