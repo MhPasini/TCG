@@ -39,15 +39,14 @@ func _on_area_2d_area_entered(area):
 	if isEmpty:
 		focus(true)
 		var card = area.get_parent() as BaseCard
-		if card.pickedUp:
-			card.inHand = false
+		if card.state == card.CardState.PICKED_UP:
 			card.slot = self
 
 func _on_area_2d_area_exited(area):
 	focus(false)
 	var card = area.get_parent() as BaseCard
-	if is_instance_valid(card) and !card.played:
-		card.inHand = true
+	if is_instance_valid(card) and card.state == card.CardState.PLAYED:
+		card.slot = null
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qx7eo"]
@@ -138,7 +137,7 @@ position = Vector2(576, 363)
 [node name="CardSlots" type="Node2D" parent="PlaySpace/PlayerArea"]
 
 [node name="CardSlot" type="Node2D" parent="PlaySpace/PlayerArea/CardSlots"]
-position = Vector2(-240, 0)
+position = Vector2(-280, 0)
 script = SubResource("GDScript_hcenb")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot"]
@@ -154,7 +153,7 @@ monitorable = false
 shape = SubResource("RectangleShape2D_qx7eo")
 
 [node name="CardSlot2" type="Node2D" parent="PlaySpace/PlayerArea/CardSlots"]
-position = Vector2(-120, 0)
+position = Vector2(-140, 0)
 script = SubResource("GDScript_hcenb")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot2"]
@@ -185,7 +184,7 @@ monitorable = false
 shape = SubResource("RectangleShape2D_qx7eo")
 
 [node name="CardSlot4" type="Node2D" parent="PlaySpace/PlayerArea/CardSlots"]
-position = Vector2(120, 0)
+position = Vector2(140, 0)
 script = SubResource("GDScript_hcenb")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot4"]
@@ -201,7 +200,7 @@ monitorable = false
 shape = SubResource("RectangleShape2D_qx7eo")
 
 [node name="CardSlot5" type="Node2D" parent="PlaySpace/PlayerArea/CardSlots"]
-position = Vector2(240, 0)
+position = Vector2(280, 0)
 script = SubResource("GDScript_hcenb")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlaySpace/PlayerArea/CardSlots/CardSlot5"]

@@ -63,7 +63,7 @@ func _on_draw_card_btn_pressed():
 
 func _on_remove_card_btn_pressed():
 	# warning if hand is empty, it's ok
-	player_hand.removeCard(player_hand.get_child(0)) 
+	player_hand.removeCard(player_hand.cards.get_child(0)) 
 
 func _on_game_over_btn_pressed():
 	game_over.game_over()
